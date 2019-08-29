@@ -1,3 +1,3 @@
 # recobot-test
 
-The Slack Bot of kakao-recoteam for the recommendation of searching results.
+The Slack Bot for the recommendation of searching results.
