@@ -9,17 +9,15 @@ from google_translator import Translator
 
 import time
 import random
+import json
 
 class Bot():
     def __init__(self):
-        # hawl = 'xoxb-9983699043-717460665509-LvJsTUCLSHeHeZGIAnC5K79E'
-        bell = 'xoxb-9983699043-712966621747-MkDbFg6u9bTCYWSdrKKMIE68'
-        # my_bot = 'xoxb-710178628226-723981424945-IqJ5SA2ZegGWOKCU3dICsUXg'
-        # my_user = 'xoxp-710178628226-721619074613-732547954694-94ea27d50220c0e3bd0c4220d42e2b13'
+
         self.pp = PrettyPrinter()
         self.logger = Aux.get_logger("bot")
-        # self.logger.debug = lambda x: self.logger.debug(self.pp.pformat(x))
-        self.bot_token = bell
+        # self.logger.debug = lambda x: self.logger.debug(self.pp.pformat(x)/
+        self.bot_token = "xoxb-710178628226-723981424945-I8nqRBYzFyv9UoOTC9h9KOTY"
         # searchdog id
         self.bot_id = "BM9TLPGHJ"
         self.w2v = W2V()
