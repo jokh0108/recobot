@@ -63,16 +63,6 @@ class W2V():
             else:
                 os.remove(fname)
 
-#        if not os.path.isfile(self.save_path + 'word_to_emoji.json'):
-#            with open(self.save_path + 'word_to_emoji.json', 'w') as f:
-#                json.dump({}, f)
-#        with open(self.save_path + 'word_to_emoji.json') as json_file:
-#            word_to_emoji = json.load(json_file)
-#            emoji = word_to_emoji.get(self.key)
-#            if emoji:
-#                recs.append((self.key, emoji[0], emoji[1]))
-#                return True
-
         self.logger.debug(self.key)
         # self.key shouldn't be unicode
         self.sims_with_keyword = self.ft.most_similar(self.key, self.num)
@@ -95,13 +85,6 @@ class W2V():
         if isinstance(keyword, unicode):
             # unicode -> utf-8
             keyword = keyword.encode('utf-8')
-#        else:
-#            try:
-#                # cp949 -> unicode -> utf-8
-#                keyword = keyword.decode('cp949').encode('utf-8')
-#            except:
-#                print "encoding error..."
-
         self.logger.debug(type(keyword))
 
         self.key = keyword
@@ -128,16 +111,6 @@ class W2V():
 
         self.sims_with_keyword = sorted([(k, v) for k, v in self.sims_with_keyword.iteritems()], key=lambda x: x[1], reverse=True)
 
-#        with open(self.save_path + 'word_to_emoji.json') as f:
-#            word_to_emoji = json.load(f)
-#        if word_to_emoji:
-#            with open(self.save_path + 'word_to_emoji.json', 'w') as f:
-#                top = self.sims_with_keyword[0]
-#                word_to_emoji.update({self.key: (top[0], top[1])})
-#                json.dump(word_to_emoji, f)
-
-
-        print()
         for k, v in self.sims_with_keyword[:self.topn]:
             self.logger.debug('[in self.sims_with_keyword] word : %s, similarity : %.3f' % (k, v))
             # print item[0]
