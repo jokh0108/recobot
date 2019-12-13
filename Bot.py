@@ -43,14 +43,6 @@ class Bot():
                 continue
 
             message = rtm_output.get('text', str())
-#            if message:
-#                message = self.tc.translate(message)
-#                rtm_output['text'] = message
-
-#            self.logger.debug(message)
-#            self.counter = (self.counter + 1) % 2
-#            if self.counter != 0:
-#                    continue
             if rtm_output.get('bot_id', None) != self.bot_id and len(message) > 0:
                 # if message : 김치돈가스뚝배기카레맛
                 feats = self.fe.single_message_extract(rtm_output)
@@ -75,22 +67,9 @@ class Bot():
                     sim_emoji.extend(top_emoji)
 
                 if sim_emoji:
-#                    res = self.sc.api_call(
-#                        "chat.postMessage",
-#                        channel=rtm_output.get('channel', None),
-#                        # text=u"왈! :" + sim_emoji + ":"
-#                        text=message[:-1] + u"엔 " + emojis + u" 지!"
-#                        # as_user=True
-#                    )
-#                    self.logger.debug(res)
-
-                    # self.logger.debug("emoji mapping : %s -> %s"%(message, ",".join(sim_emoji)))
-
-
                     random.shuffle(sim_emoji)
                     for t in sim_emoji:
                         self.logger.debug("%s -> %s : %.3f"%(t[0], t[1], t[2]))
-#                    out_num = random.randrange(1, 4)
                     out_num = 3
                     for reaction_tuple in sim_emoji[:out_num+1]:
                         feat, emoji, sim = reaction_tuple
@@ -103,14 +82,6 @@ class Bot():
                         )
                         if not res.get('ok'):
                             self.logger.debug(res)
-#                else:
-#                    self.logger.debug('no similar emojis....')
-#                    self.sc.api_call(
-#                        "chat.postEphemeral",
-#                        channel = rtm_output.get('channel'),
-#                        text = '이모지가 없어.. 미안해 ㅠㅠ',
-#                        user = rtm_output.get('user')
-#                    )
             time.sleep(0.2)
 
 if __name__ == "__main__":
