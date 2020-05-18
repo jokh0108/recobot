@@ -1,3 +1,3 @@
-# recobot-test
+# recobot for emoji😃😁😍🧐🤩
 
-The Slack Bot for the recommendation of searching results.
+The Slack Bot for the recommendation of emoji
